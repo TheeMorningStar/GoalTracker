@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="nav_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_home" />
+
+        <item
+            android:id="@+id/nav_goal_monitoring"
+            android:icon="@drawable/ic_monitioring"
+            android:title="@string/title_goals_monitoring" />
+
+        <item
+            android:id="@+id/nav_add_goals"
+            android:icon="@drawable/ic_add"
+            android:title="@string/title_add_goal" />
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_contact"
+            android:title="@string/title_contact_us" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/title_setting" />
+    </group>
+</menu>
