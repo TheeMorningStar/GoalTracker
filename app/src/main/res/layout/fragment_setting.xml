@@ -6,21 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".fragment.SettingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--        &lt;!&ndash; Content &ndash;&gt;-->
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0">-->
 
-    <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                &lt;!&ndash; Title &ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/title_textview"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Settings"-->
+<!--                    android:textSize="24sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:paddingBottom="15dp"-->
+
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                &lt;!&ndash; Security &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/security_icon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/security"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/title_textview"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/privacy_icon"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/security_text"-->
+<!--                     />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/security_text"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Security"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toEndOf="@id/security_icon"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/title_textview"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/privacy_text"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintVerticalBias="0.5" />-->
+
+<!--                &lt;!&ndash; Privacy &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/privacy_icon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/privacy"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/security_icon"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/account_icon"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/privacy_text"-->
+<!--                    app:layout_constraintVerticalBias="0.5" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/privacy_text"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Privacy"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toEndOf="@id/privacy_icon"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/security_text"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/account_text"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintVerticalBias="0.5" />-->
+
+<!--                &lt;!&ndash; Account &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/account_icon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/account"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/privacy_icon"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/account_text"-->
+<!--                    app:layout_constraintVerticalBias="0.5" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/account_text"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Account"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:paddingBottom="10dp"-->
+
+<!--                    app:layout_constraintStart_toEndOf="@id/account_icon"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/privacy_text"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintVerticalBias="0.5" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
