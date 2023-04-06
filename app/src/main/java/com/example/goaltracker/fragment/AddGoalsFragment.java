@@ -1,20 +1,30 @@
 package com.example.goaltracker.fragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.goaltracker.R;
+import com.example.goaltracker.Task;
+import com.example.goaltracker.TaskAdapter;
+import com.example.goaltracker.sqlite.MyDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,14 +37,24 @@ This class is created by Yatri Patel
 */
 public class AddGoalsFragment extends Fragment {
 
+    private Button btnAddGoal;
+    private Spinner spinner;
+
+    private EditText taskName, start_date, end_date, description;
+    MyDatabaseHelper dbHelper;
+    SQLiteDatabase db;
+    private Context mContext;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_add_goals, container, false);
 
+        initView(view);
+
+        AddTaskEvent();
         //  Set spinner
-        Spinner spinner = view.findViewById(R.id.priority);
+        spinner = view.findViewById(R.id.priority);
 
         // Set values in drop down menu
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.priority, android.R.layout.simple_spinner_item);
@@ -48,8 +68,6 @@ public class AddGoalsFragment extends Fragment {
         }
 
         // Get a reference to the start date
-        EditText start_date = view.findViewById(R.id.start_date);
-
         // Set an OnClickListener to show the DatePicker when the user clicks on the button
         start_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +94,6 @@ public class AddGoalsFragment extends Fragment {
         });
 
         // Get a reference to the end date
-        EditText end_date = view.findViewById(R.id.end_date);
-
         // Set an OnClickListener to show the DatePicker when the user clicks on the button
         end_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +118,9 @@ public class AddGoalsFragment extends Fragment {
                 String startDateString = start_date.getText().toString();
 
                 if (startDateString.isEmpty()) {
-                   Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Please select start date first", Toast.LENGTH_SHORT);
-                   toast.setGravity(Gravity.CENTER, 0, 0);
-                   toast.show();
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Please select start date first", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
 
                 } else {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.CANADA.getDefault());
@@ -122,10 +138,57 @@ public class AddGoalsFragment extends Fragment {
             }
         });
 
-
         // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_add_goals, container, false);
         return view;
 
     }
+
+    private void initView(View view) {
+        taskName = view.findViewById(R.id.name);
+        description = view.findViewById(R.id.description);
+        start_date = view.findViewById(R.id.start_date);
+        end_date = view.findViewById(R.id.end_date);
+        btnAddGoal = view.findViewById(R.id.add_goal_button);
+    }
+
+    private void AddTaskEvent() {
+        // Set an onClickListener for the button
+        btnAddGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Task task1 = new Task(taskName.getText().toString(), spinner.getSelectedItem().toString(), start_date.getText().toString(), end_date.getText().toString(), description.getText().toString());
+                dbHelper.insertTask(task1);
+                Log.d("TAG", "Item ADDED");
+                Toast.makeText(getContext(), "Item ADDED", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (mContext != null) {
+            dbHelper = new MyDatabaseHelper(mContext);
+            db = dbHelper.getWritableDatabase();
+        } else {
+            // handle the case where mContext is null
+
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
+
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mContext = null;
+    }
+
+
 }
