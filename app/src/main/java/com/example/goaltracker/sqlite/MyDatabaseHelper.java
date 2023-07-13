@@ -10,8 +10,9 @@ import android.util.Log;
 import com.example.goaltracker.Task;
 
 import java.util.ArrayList;
-import java.util.List;
-
+/*
+This class is created by Yatri Patel
+*/
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "tasks.db";
     private static final int DATABASE_VERSION = 1;
@@ -28,6 +29,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TaskContract.TaskEntry.TABLE_NAME;
 
+    private static final String SQL_CREATE_LOGIN_ENTRIES =
+            "CREATE TABLE " + LoginContract.LoginEntry.TABLE_NAME + " (" +
+                    LoginContract.LoginEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    LoginContract.LoginEntry.COLUMN_NAME_NAME + " TEXT," +
+                    LoginContract.LoginEntry.COLUMN_NAME_EMAIL + " TEXT," +
+                    LoginContract.LoginEntry.COLUMN_NAME_PASSWORD + " TEXT)";
+
+    private static final String SQL_DELETE_LOGIN_ENTRIES =
+            "DROP TABLE IF EXISTS " + LoginContract.LoginEntry.TABLE_NAME;
+
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -35,14 +46,36 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_LOGIN_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DELETE_LOGIN_ENTRIES);
         onCreate(db);
     }
 
+    public Cursor checkSignInDetails(String email, String password) {
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = LoginContract.LoginEntry.COLUMN_NAME_EMAIL + " = ? AND " +
+                LoginContract.LoginEntry.COLUMN_NAME_PASSWORD + " = ?";
+        String[] selectionArgs = { email, password };
+        Cursor cursor = db.query(
+                LoginContract.LoginEntry.TABLE_NAME,
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        if (cursor.moveToFirst()) {
+            return cursor;
+        } else {
+            return null;
+        }
+    }
 
     public long insertTask(Task task) {
         SQLiteDatabase db = getWritableDatabase();
@@ -51,8 +84,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         // values.put(TaskContract.TaskEntry._ID, getTaskId(task.getTaskName()));
         values.put(TaskContract.TaskEntry.COLUMN_NAME_NAME, task.getTaskName());
         values.put(TaskContract.TaskEntry.COLUMN_NAME_PRIORITY, task.getTaskPriority());
-        values.put(TaskContract.TaskEntry.COLUMN_NAME_START_DATE, task.getTaskStartData());
-        values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DATE, task.getTaskEndData());
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_START_DATE, task.getTaskStartDate());
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DATE, task.getTaskEndDate());
         values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DESCRIPTION, task.getTaskDescription());
 
         // Insert the new row into the table and get the ID of the new row
@@ -72,21 +105,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-   /* public int row_ID(Task task) {
-        SQLiteDatabase db = getWritableDatabase();
-        return db.execSQL("SELECT" + TaskContract.TaskEntry._ID + "FROM" + task+"WHERE name =" + task.getTaskName());
-    }*/
-
-    public int updateTask(Task task) {
-        SQLiteDatabase db = getWritableDatabase();
+    public void updateTask(SQLiteDatabase db, int id, String name, String priority, String startDate, String endDate, String endDescription) {
         ContentValues values = new ContentValues();
-        values.put(TaskContract.TaskEntry.COLUMN_NAME_PRIORITY, task.getTaskPriority());
-        values.put(TaskContract.TaskEntry.COLUMN_NAME_NAME, task.getTaskName());
-        values.put(TaskContract.TaskEntry.COLUMN_NAME_START_DATE, task.getTaskStartData());
-        String selection = TaskContract.TaskEntry._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(task.getTaskStartData())};
-        return db.update(TaskContract.TaskEntry.TABLE_NAME, values, selection, selectionArgs);
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_NAME, name);
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_PRIORITY, priority);
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_START_DATE, startDate);
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DATE, endDate);
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DESCRIPTION, endDescription);
+
+        String selection = TaskContract.TaskEntry.COLUMN_NAME_ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        db.update(TaskContract.TaskEntry.TABLE_NAME, values, selection, selectionArgs);
     }
+
 
     public int deleteTask(int id) {
         SQLiteDatabase db = getWritableDatabase();
@@ -125,6 +157,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Task task = new Task(id, name, priority, start_date, end_date, description);
             tasks.add(task);
         }
+
         cursor.close();
         return tasks;
     }

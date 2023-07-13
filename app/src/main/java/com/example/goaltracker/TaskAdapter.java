@@ -1,15 +1,18 @@
 package com.example.goaltracker;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
@@ -62,7 +64,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         holder.imageViewTaskStatus.setBackground(drawable);
         holder.textViewTaskName.setText(task.getTaskName());
-        holder.textViewTaskDate.setText(task.getTaskStartData());
+        holder.textViewTaskDate.setText(task.getTaskStartDate());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,17 +72,53 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
                 Toast.makeText(myContext, task.getTaskName(), Toast.LENGTH_LONG).show();
 
+                //Get shared preferences object
+                String sharedPrefFile = "com.example.goaltracker";
+                SharedPreferences mPreferences = myContext.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+                //Save data to shared pref
+                SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                preferencesEditor.putString("task_id", String.valueOf(task.getId()));
+                preferencesEditor.putString("task_name", String.valueOf(task.getTaskName()));
+                preferencesEditor.putString("task_priority", String.valueOf(task.getTaskPriority()));
+                preferencesEditor.putString("task_start_data", String.valueOf(task.taskStartData));
+                preferencesEditor.putString("task_end_data", String.valueOf(task.taskEndData));
+                preferencesEditor.putString("task_description", String.valueOf(task.taskDescription));
+
+                preferencesEditor.apply();
+                Intent i = new Intent(myContext, SingleGoalActivity.class);
+                myContext.startActivity(i);
+
             }
         });
     }
 
     public void removeItem(int position) {
-        String id = String.valueOf(taskList.get(position).getId()); // assuming itemList is your list of items
-        taskList.remove(position);
-        notifyItemRemoved(position);
-        dbHelper.deleteTask(Integer.parseInt(id));
-        db.close();
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
+        builder.setTitle("Delete Note");
+        builder.setMessage("Are you sure you want to delete this note?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Delete the note
+//                myContext.remove(position);
+//                notifyItemRemoved(position);
+                String id = String.valueOf(taskList.get(position).getId()); // assuming itemList is your list of items
+                taskList.remove(position);
+                notifyItemRemoved(position);
+                dbHelper.deleteTask(Integer.parseInt(id));
+                db.close();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @Override

@@ -4,14 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".fragment.AddGoalsFragment">
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:indeterminate="false"
+        android:visibility="gone"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:text="Goal added"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/loading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:hint="Name"
         android:inputType="text"
         android:selectAllOnFocus="true"
@@ -26,8 +51,6 @@
         android:id="@+id/priority"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
 
         app:layout_constraintBottom_toTopOf="@id/start_date"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +61,6 @@
         android:id="@+id/start_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:hint="Start Date"
         android:inputType="none"
 
@@ -52,8 +73,6 @@
         android:id="@+id/end_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:hint="End Date"
         android:inputType="none"
 
@@ -66,8 +85,6 @@
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:hint="Description"
 
         app:layout_constraintBottom_toTopOf="@id/add_goal_button"
@@ -80,8 +97,6 @@
         android:layout_width="375dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="Add Goal"

@@ -8,7 +8,9 @@ import android.util.Log;
 import com.example.goaltracker.Task;
 
 import java.util.ArrayList;
-
+/*
+This class is created by Yatri Patel
+*/
 public class TaskDao {
     private SQLiteDatabase database;
 
@@ -19,7 +21,7 @@ public class TaskDao {
         ContentValues values = new ContentValues();
 
         values.put("taskName", task.getTaskName());
-        values.put("taskDate", task.getTaskStartData());
+        values.put("taskDate", task.getTaskStartDate());
         database.insert("mytable", null, values);
     }
 

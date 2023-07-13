@@ -2,8 +2,10 @@ package com.example.goaltracker.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,7 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.goaltracker.NavigationDrawerActivity;
 import com.example.goaltracker.R;
 import com.example.goaltracker.Task;
 import com.example.goaltracker.TaskAdapter;
@@ -44,6 +49,9 @@ public class AddGoalsFragment extends Fragment {
     MyDatabaseHelper dbHelper;
     SQLiteDatabase db;
     private Context mContext;
+
+    private ProgressBar loading;
+    private TextView loading_text;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -150,6 +158,9 @@ public class AddGoalsFragment extends Fragment {
         start_date = view.findViewById(R.id.start_date);
         end_date = view.findViewById(R.id.end_date);
         btnAddGoal = view.findViewById(R.id.add_goal_button);
+
+        loading = view.findViewById(R.id.loading);
+        loading_text = view.findViewById(R.id.loading_text);
     }
 
     private void AddTaskEvent() {
@@ -157,10 +168,40 @@ public class AddGoalsFragment extends Fragment {
         btnAddGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Task task1 = new Task(taskName.getText().toString(), spinner.getSelectedItem().toString(), start_date.getText().toString(), end_date.getText().toString(), description.getText().toString());
+                Task task1 = new Task(taskName.getText().toString(), spinner.getSelectedItem().toString(), start_date.getText().toString(), end_date.getText().toString(), description.getText().toString());
                 dbHelper.insertTask(task1);
                 Log.d("TAG", "Item ADDED");
-                Toast.makeText(getContext(), "Item ADDED", Toast.LENGTH_LONG).show();
+
+
+                // get loading elements
+                loading.setVisibility(View.VISIBLE);
+                loading_text.setVisibility(View.VISIBLE);
+
+                description.setVisibility(View.GONE);
+                start_date.setVisibility(View.GONE);
+                end_date.setVisibility(View.GONE);
+                spinner.setVisibility(View.GONE);
+                taskName.setVisibility(View.GONE);
+                btnAddGoal.setVisibility(View.GONE);
+
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading.setVisibility(View.GONE);
+                        loading_text.setVisibility(View.GONE);
+
+                        description.setText("");
+                        start_date.setText("");
+                        end_date.setText("");
+                        taskName.setText("");
+
+                        Intent intent = new Intent(getActivity().getApplicationContext(), NavigationDrawerActivity.class);
+                        startActivity(intent);
+
+                    }
+                }, 1000);
+
             }
         });
     }

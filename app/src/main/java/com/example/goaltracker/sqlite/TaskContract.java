@@ -2,6 +2,9 @@ package com.example.goaltracker.sqlite;
 
 import android.provider.BaseColumns;
 
+/*
+This class is created by Yatri Patel
+*/
 public final class TaskContract {
     private TaskContract() {
     }

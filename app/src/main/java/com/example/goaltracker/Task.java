@@ -50,7 +50,7 @@ public class Task extends Throwable {
         this.taskPriority = taskPriority;
     }
 
-    public String getTaskStartData() {
+    public String getTaskStartDate() {
         return taskStartData;
     }
 
@@ -66,7 +66,7 @@ public class Task extends Throwable {
         this.id = id;
     }
 
-    public String getTaskEndData() {
+    public String getTaskEndDate() {
         return taskEndData;
     }
 

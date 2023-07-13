@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".fragment.SettingFragment">
 
 
@@ -16,6 +17,9 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/security_text"
@@ -28,8 +32,21 @@
         android:textSize="18sp"
         android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toEndOf="@id/security_icon"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2F000000"
+
+        app:layout_constraintBottom_toTopOf="@id/privacy_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/security_text" />
 
     <!-- Privacy -->
     <ImageView
@@ -40,6 +57,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/security_icon"
         app:layout_constraintEnd_toStartOf="@id/privacy_text"/>
@@ -52,8 +72,21 @@
         android:textSize="18sp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toEndOf="@id/privacy_icon"
         app:layout_constraintTop_toBottomOf="@id/security_text" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2F000000"
+
+        app:layout_constraintTop_toBottomOf="@id/privacy_text"
+        app:layout_constraintBottom_toTopOf="@id/account_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Account -->
     <ImageView
@@ -64,6 +97,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/privacy_icon"
         app:layout_constraintEnd_toStartOf="@id/account_text" />
@@ -76,8 +112,21 @@
         android:textSize="18sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toEndOf="@id/account_icon"
         app:layout_constraintTop_toBottomOf="@id/privacy_text" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2F000000"
+
+        app:layout_constraintTop_toBottomOf="@id/account_text"
+        app:layout_constraintBottom_toTopOf="@id/help_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Help -->
     <ImageView
@@ -88,6 +137,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/account_icon"
         app:layout_constraintEnd_toStartOf="@id/help_text" />
@@ -100,8 +152,21 @@
         android:textSize="18sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toEndOf="@id/help_icon"
         app:layout_constraintTop_toBottomOf="@id/account_text" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2F000000"
+
+        app:layout_constraintTop_toBottomOf="@id/help_text"
+        app:layout_constraintBottom_toTopOf="@id/notification_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Notification -->
     <ImageView
@@ -112,6 +177,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/help_icon"
         app:layout_constraintEnd_toStartOf="@id/notification_icon" />
@@ -124,6 +192,9 @@
         android:textSize="18sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toEndOf="@id/notification_icon"
         app:layout_constraintTop_toBottomOf="@id/help_text" />
 

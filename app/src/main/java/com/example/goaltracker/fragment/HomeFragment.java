@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
     MyDatabaseHelper dbHelper;
     SQLiteDatabase db;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
