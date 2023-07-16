@@ -1,13 +1,17 @@
 package com.example.goaltracker.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +38,10 @@ public class HomeFragment extends Fragment {
     MyDatabaseHelper dbHelper;
     SQLiteDatabase db;
 
+    private TextView txtUserName;
+    private SharedPreferences sharedPreferences;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +49,16 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        sharedPreferences = getActivity().getSharedPreferences("login_prefs", MODE_PRIVATE);
 
+        if (!(sharedPreferences == null)) {
+
+            // User is logged in, retrieve login details from SharedPreferences
+            txtUserName = view.findViewById(R.id.txt_user_name);
+            txtUserName.setText("Hi,"+sharedPreferences.getString("name", ""));
+
+
+        }
         return view;
 
     }

@@ -6,8 +6,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,7 +20,6 @@ import com.example.goaltracker.sqlite.MyDatabaseHelper;
 
 public class SingleGoalActivity extends AppCompatActivity {
 
-    ProgressBar progressBar;
     TextView goalNameTextView, goalPriorityTextView, goalStartDateTextView, goalEndDateTextView, goalDescriptionTextView;
 
     MyDatabaseHelper dbHelper;
@@ -26,25 +27,24 @@ public class SingleGoalActivity extends AppCompatActivity {
     private String id, taskName, taskPriority, taskStartData, taskEndData, taskDescription;
     private Button btnUpdateGoal;
 
-
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_single_goal);
 
+
         // Find the views in the layout
-        progressBar = findViewById(R.id.goal_progress_bar);
         goalNameTextView = findViewById(R.id.goal_name);
         goalPriorityTextView = findViewById(R.id.goal_priority);
         goalStartDateTextView = findViewById(R.id.goal_start_date);
         goalEndDateTextView = findViewById(R.id.goal_end_date);
         goalDescriptionTextView = findViewById(R.id.goal_description);
-        btnUpdateGoal= findViewById(R.id.want_to_update_goal_button);
+        btnUpdateGoal = findViewById(R.id.want_to_update_goal_button);
 
 
         // Set up the progress bar
-        progressBar.setMax(100);
-        progressBar.setProgress(50);
 
         dbHelper = new MyDatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
@@ -63,6 +63,8 @@ public class SingleGoalActivity extends AppCompatActivity {
         taskDescription = mPreferences.getString("task_description", "");
 
         // Set up the text views
+        goalNameTextView.setPaintFlags(goalNameTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         goalNameTextView.setText(taskName);
         goalPriorityTextView.setText(taskPriority);
         goalStartDateTextView.setText(taskStartData);
@@ -71,6 +73,7 @@ public class SingleGoalActivity extends AppCompatActivity {
         wantToUpdateGoal();
 
     }
+
     private void wantToUpdateGoal() {
         // Set an onClickListener for the button
         btnUpdateGoal.setOnClickListener(new View.OnClickListener() {

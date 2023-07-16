@@ -64,7 +64,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         holder.imageViewTaskStatus.setBackground(drawable);
         holder.textViewTaskName.setText(task.getTaskName());
-        holder.textViewTaskDate.setText(task.getTaskStartDate());
+        holder.textViewTaskDate.setText(task.getTaskDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

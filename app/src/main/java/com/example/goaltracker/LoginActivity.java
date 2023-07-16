@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     password.requestFocus();
                 } else {
                     Cursor loginDetailsCursor = databaseHelper.checkSignInDetails(inputEmail, inputPassword);
-                    if (loginDetailsCursor.moveToFirst()) {
+                    if (loginDetailsCursor != null && loginDetailsCursor.moveToFirst()) {
                         // Login successful, retrieve user details from the cursor
                         String name = loginDetailsCursor.getString(loginDetailsCursor.getColumnIndexOrThrow(LoginContract.LoginEntry.COLUMN_NAME_NAME));
                         String email = loginDetailsCursor.getString(loginDetailsCursor.getColumnIndexOrThrow(LoginContract.LoginEntry.COLUMN_NAME_EMAIL));
@@ -71,8 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
                     }
-                    loginDetailsCursor.close();
-
+                    if (loginDetailsCursor != null) {
+                        loginDetailsCursor.close();
+                    }
                 }
             }
         });

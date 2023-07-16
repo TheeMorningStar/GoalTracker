@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="#CBE6EA"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/pishtaco"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     app:cardMaxElevation="10dp"
@@ -33,28 +30,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Android Assignment 1"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_task_status"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_task_status"
-            app:srcCompat="@drawable/ic_calendar" />
 
         <TextView
             android:id="@+id/textView_task_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:text="05/05/2023"
-            app:layout_constraintStart_toEndOf="@+id/imageView_calendar"
-            app:layout_constraintTop_toTopOf="@id/imageView_calendar" />
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:text="Task Description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_task_name"
+            app:layout_constraintTop_toTopOf="@id/imageView_task_status" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
