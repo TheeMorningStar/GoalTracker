@@ -168,12 +168,28 @@ public class AddGoalsFragment extends Fragment {
         btnAddGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Task task1 = new Task(taskName.getText().toString(), spinner.getSelectedItem().toString(), start_date.getText().toString(), end_date.getText().toString(), description.getText().toString());
-                dbHelper.insertTask(task1);
+                // Retrieve the input values
+                String name = taskName.getText().toString().trim();
+                String priority = spinner.getSelectedItem().toString();
+                String startDate = start_date.getText().toString().trim();
+                String endDate = end_date.getText().toString().trim();
+                String desc = description.getText().toString().trim();
+
+                // Perform input validation
+                if (name.isEmpty() || startDate.isEmpty() || endDate.isEmpty() || desc.isEmpty()) {
+                    // Display a toast message indicating the empty fields
+                    Toast.makeText(mContext, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Create a new Task object
+                Task task = new Task(name, priority, startDate, endDate, desc);
+
+                // Insert the task into the database
+                dbHelper.insertTask(task);
                 Log.d("TAG", "Item ADDED");
 
-
-                // get loading elements
+                // Perform the loading animation
                 loading.setVisibility(View.VISIBLE);
                 loading_text.setVisibility(View.VISIBLE);
 
@@ -184,27 +200,28 @@ public class AddGoalsFragment extends Fragment {
                 taskName.setVisibility(View.GONE);
                 btnAddGoal.setVisibility(View.GONE);
 
-
+                // Delay the UI update to simulate a loading process
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         loading.setVisibility(View.GONE);
                         loading_text.setVisibility(View.GONE);
 
+                        // Clear the input fields
                         description.setText("");
                         start_date.setText("");
                         end_date.setText("");
                         taskName.setText("");
 
-                        Intent intent = new Intent(getActivity().getApplicationContext(), NavigationDrawerActivity.class);
+                        // Navigate to the desired activity
+                        Intent intent = new Intent(mContext, NavigationDrawerActivity.class);
                         startActivity(intent);
-
                     }
                 }, 1000);
-
             }
         });
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

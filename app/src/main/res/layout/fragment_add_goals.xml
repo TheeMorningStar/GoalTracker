@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/extra_light_pishtaco"
     tools:context=".fragment.AddGoalsFragment">
 
     <ProgressBar
@@ -53,6 +54,7 @@
         android:layout_height="80dp"
         app:layout_constraintBottom_toTopOf="@id/start_date"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name" />
 

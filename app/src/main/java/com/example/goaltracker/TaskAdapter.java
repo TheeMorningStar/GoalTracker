@@ -55,11 +55,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = myContext.getResources().getDrawable(R.drawable.circular);
         if (task.getTaskPriority().equals("High")) {
-            drawable.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+            drawable.setColorFilter(Color.parseColor("#EF5350"), PorterDuff.Mode.SRC_IN);
         } else if (task.getTaskPriority().equals("Low")) {
-            drawable.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+            drawable.setColorFilter(Color.parseColor("#FDD835"), PorterDuff.Mode.SRC_IN);
         } else if (task.getTaskPriority().equals("Medium")) {
-            drawable.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+            drawable.setColorFilter(Color.parseColor("#66BB6A"), PorterDuff.Mode.SRC_IN);
         }
 
         holder.imageViewTaskStatus.setBackground(drawable);
