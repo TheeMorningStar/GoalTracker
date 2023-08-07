@@ -1,4 +1,4 @@
-package com.example.goaltracker;
+package com.example.goaltracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.goaltracker.R;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
     EditText emailInput, passwordInput1, passwordInput2;

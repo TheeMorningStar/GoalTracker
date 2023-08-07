@@ -1,4 +1,4 @@
-package com.example.goaltracker;
+package com.example.goaltracker.activity;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -13,10 +13,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.goaltracker.R;
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
 import com.example.goaltracker.sqlite.LoginContract;
-
-import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 

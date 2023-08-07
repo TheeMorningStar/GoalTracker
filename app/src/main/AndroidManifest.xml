@@ -12,30 +12,33 @@
         android:theme="@style/Theme.GoalTracker.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.GoalTracker.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".activity.ForgetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".activity.SignupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".activity.SingleGoalActivity"
             android:exported="false" />
         <activity
-            android:name=".SingleGoalActivity"
-            android:exported="false" />
-        <activity android:name=".ProfileActivity" />
+            android:name=".activity.ProfileActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".NavigationDrawerActivity"
+            android:name=".activity.NavigationDrawerActivity"
             android:exported="false"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.GoalTracker.NoActionBar"/>
+            android:theme="@style/Theme.GoalTracker.NoActionBar" />
         <activity
-            android:name=".UpdateTaskActivity"
+            android:name=".activity.UpdateTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".activity.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>

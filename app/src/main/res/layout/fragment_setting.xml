@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/extra_light_pishtaco"
+    android:padding="16dp"
     tools:context=".fragment.SettingFragment">
 
 
@@ -14,27 +14,27 @@
         android:id="@+id/security_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_security"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:src="@drawable/ic_security"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/security_text"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/security_text"
+    <TextView
+        android:id="@+id/security_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Security"
-        android:textSize="18sp"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="Security"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toEndOf="@id/security_icon"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,27 +54,27 @@
         android:id="@+id/privacy_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_privacy"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:src="@drawable/ic_privacy"
 
+        app:layout_constraintEnd_toStartOf="@id/privacy_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/security_icon"
-        app:layout_constraintEnd_toStartOf="@id/privacy_text"/>
+        app:layout_constraintTop_toBottomOf="@id/security_icon" />
 
     <TextView
         android:id="@+id/privacy_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Privacy"
-        android:textSize="18sp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="Privacy"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toEndOf="@id/privacy_icon"
         app:layout_constraintTop_toBottomOf="@id/security_text" />
@@ -84,37 +84,37 @@
         android:layout_height="1dp"
         android:background="#2F000000"
 
-        app:layout_constraintTop_toBottomOf="@id/privacy_text"
         app:layout_constraintBottom_toTopOf="@id/account_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/privacy_text" />
 
     <!-- Account -->
     <ImageView
         android:id="@+id/account_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_account"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:src="@drawable/ic_account"
 
+        app:layout_constraintEnd_toStartOf="@id/account_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/privacy_icon"
-        app:layout_constraintEnd_toStartOf="@id/account_text" />
+        app:layout_constraintTop_toBottomOf="@id/privacy_icon" />
 
     <TextView
         android:id="@+id/account_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="Account"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toEndOf="@id/account_icon"
         app:layout_constraintTop_toBottomOf="@id/privacy_text" />
@@ -124,37 +124,37 @@
         android:layout_height="1dp"
         android:background="#2F000000"
 
-        app:layout_constraintTop_toBottomOf="@id/account_text"
         app:layout_constraintBottom_toTopOf="@id/help_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/account_text" />
 
     <!-- Help -->
     <ImageView
         android:id="@+id/help_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_help"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:src="@drawable/ic_help"
 
+        app:layout_constraintEnd_toStartOf="@id/help_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account_icon"
-        app:layout_constraintEnd_toStartOf="@id/help_text" />
+        app:layout_constraintTop_toBottomOf="@id/account_icon" />
 
     <TextView
         android:id="@+id/help_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Help"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="Help"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toEndOf="@id/help_icon"
         app:layout_constraintTop_toBottomOf="@id/account_text" />
@@ -164,40 +164,70 @@
         android:layout_height="1dp"
         android:background="#2F000000"
 
-        app:layout_constraintTop_toBottomOf="@id/help_text"
         app:layout_constraintBottom_toTopOf="@id/notification_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/help_text" />
 
     <!-- Notification -->
     <ImageView
         android:id="@+id/notification_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_notification"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:src="@drawable/ic_notification"
 
+        app:layout_constraintEnd_toStartOf="@id/notification_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/help_icon"
-        app:layout_constraintEnd_toStartOf="@id/notification_icon" />
+        app:layout_constraintTop_toBottomOf="@id/help_icon" />
 
     <TextView
         android:id="@+id/notification_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notification"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="Notification"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toEndOf="@id/notification_icon"
         app:layout_constraintTop_toBottomOf="@id/help_text" />
+
+    <ImageView
+        android:id="@+id/log_out_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/log_out_text"
+        app:layout_constraintTop_toBottomOf="@id/notification_icon" />
+
+    <TextView
+        android:id="@+id/log_out_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:text="SignOut"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/log_out_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

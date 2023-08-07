@@ -1,6 +1,5 @@
 package com.example.goaltracker.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
@@ -11,13 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.goaltracker.NavigationDrawerActivity;
 import com.example.goaltracker.R;
-import com.example.goaltracker.Task;
 
 /*
 This class is created by Yatri Patel

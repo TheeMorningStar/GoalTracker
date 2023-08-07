@@ -1,4 +1,4 @@
-package com.example.goaltracker;
+package com.example.goaltracker.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,15 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.Bundle;
-import android.widget.Toast;
 
+import com.example.goaltracker.R;
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
 
 public class SingleGoalActivity extends AppCompatActivity {

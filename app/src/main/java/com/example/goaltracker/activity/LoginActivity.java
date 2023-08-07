@@ -1,4 +1,4 @@
-package com.example.goaltracker;
+package com.example.goaltracker.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.goaltracker.R;
 import com.example.goaltracker.sqlite.LoginContract;
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
 

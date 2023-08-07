@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.goaltracker.activity.SingleGoalActivity;
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
 
 import java.util.List;

@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.goaltracker.Task;
 
 import java.util.ArrayList;
+
 /*
 This class is created by Yatri Patel
 */
@@ -60,7 +61,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String selection = LoginContract.LoginEntry.COLUMN_NAME_EMAIL + " = ? AND " +
                 LoginContract.LoginEntry.COLUMN_NAME_PASSWORD + " = ?";
-        String[] selectionArgs = { email, password };
+        String[] selectionArgs = {email, password};
         Cursor cursor = db.query(
                 LoginContract.LoginEntry.TABLE_NAME,
                 null,
@@ -91,7 +92,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         // Insert the new row into the table and get the ID of the new row
         long newRowId = db.insert(TaskContract.TaskEntry.TABLE_NAME, null, values);
         //getTaskId(task.getTaskName());
-// Check that the new row ID is valid
+        // Check that the new row ID is valid
         if (newRowId != -1) {
             Log.d("TAG", "New row inserted with ID " + newRowId);
             //Log.d("###", "DataBase" + getTaskId(task.getTaskName()));
@@ -114,7 +115,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         values.put(TaskContract.TaskEntry.COLUMN_NAME_END_DESCRIPTION, endDescription);
 
         String selection = TaskContract.TaskEntry.COLUMN_NAME_ID + " = ?";
-        String[] selectionArgs = { String.valueOf(id) };
+        String[] selectionArgs = {String.valueOf(id)};
 
         db.update(TaskContract.TaskEntry.TABLE_NAME, values, selection, selectionArgs);
     }

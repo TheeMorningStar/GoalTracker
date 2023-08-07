@@ -23,12 +23,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.goaltracker.NavigationDrawerActivity;
+import com.example.goaltracker.activity.NavigationDrawerActivity;
 import com.example.goaltracker.R;
 import com.example.goaltracker.Task;
-import com.example.goaltracker.TaskAdapter;
 import com.example.goaltracker.sqlite.MyDatabaseHelper;
 
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.example.goaltracker;
+package com.example.goaltracker.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,10 +16,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.goaltracker.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-
-import org.w3c.dom.Text;
 
 /*
 This class is created by Yatri Patel
